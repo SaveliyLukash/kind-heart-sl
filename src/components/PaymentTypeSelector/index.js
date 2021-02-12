@@ -10,7 +10,7 @@ import TerminalsLogo from '../../images/logos/terminals-logo.png';
 const PaymentTypeSelector = () => {
   return (
     <div
-      className={`${style.paymentTypeSelector} d-flex flex-wrap align-items-center`}
+      className={`${style.paymentTypeSelector} d-flex flex-wrap align-items-center justify-content-center justify-content-xl-start`}
     >
       <PaymentTypeItem
         caption="Карта Visa/MasterCard"

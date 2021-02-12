@@ -1,12 +1,14 @@
-.formColumn{
-  min-width: 300px;
+.formColumn {
+  min-width: 260px;
+  width: 360px;
   max-width: 400px;
   margin: 0 4rem;
 }
-.extraLogoWrapper{
+
+.extraLogoWrapper {
   position: relative;
 
-  .extraLogo{
+  .extraLogo {
     position: absolute;
     margin-left: 1rem;
     left: 100%;
@@ -14,8 +16,42 @@
     width: 60px;
   }
 }
-.paymentWrapper{
+
+.extraLogoDiv {
+  position: relative;
+  .extraLogoLink {
+    overflow: hidden;
+  }
+
+  .extraLogoInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+}
+
+.paymentWrapper {
   border: 2px solid #c5d5e6;
   border-radius: 1rem;
   padding: 0.75rem 1.25rem;
+}
+
+.closeHandle {
+  position: absolute;
+  right: 5px;
+  top: -60px;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: 0.25s all;
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .paymentWrapper {
+    padding: 0.75rem 0.75rem;
+  }
 }

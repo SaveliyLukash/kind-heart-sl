@@ -6,6 +6,7 @@ $activeColor: #9c5d9a;
 .helpTypeItem {
   cursor: pointer;
   transition: 0.25s all;
+  min-width: 240px;
 
   &:hover {
     transform: scale(1.025);

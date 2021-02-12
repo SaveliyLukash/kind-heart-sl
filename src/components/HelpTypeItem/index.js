@@ -11,7 +11,7 @@ const HelpTypeItem = (props) => {
 
   return (
     <div
-      className={`d-flex align-items-center mx-2 ${style.helpTypeItem} ${activeStyle}`}
+      className={`d-flex align-items-center mx-2 my-2 ${style.helpTypeItem} ${activeStyle}`}
       onClick={() => {
         setHelpType(helpTypeIndex);
       }}
