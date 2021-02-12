@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './PaymentTypeItem.module.scss';
+import { PaymentTypeContext } from '../../contexts/PaymentTypeContext';
 
 const PaymentTypeItem = (props) => {
-  const { active, caption, image } = props;
+  const { paymentTypeIndex, caption, image } = props;
 
-  const activeStyle = active ? style.active : null;
+  const { paymentType, setPaymentType } = useContext(PaymentTypeContext);
+
+  const activeStyle = paymentType === paymentTypeIndex ? style.active : null;
 
   return (
-    <div className={`${style.paymentTypeItem} ${activeStyle}`}>
+    <div
+      className={`${style.paymentTypeItem} ${activeStyle}`}
+      onClick={() => {
+        setPaymentType(paymentTypeIndex);
+      }}
+    >
       <div
         className={style.logo}
         style={{ backgroundImage: `url('${image}')` }}

@@ -24,6 +24,8 @@ $activeColor: #9c5d9a;
   }
 
   &.active {
+    transform: scale(1);
+
     .caption {
       color: #000;
     }

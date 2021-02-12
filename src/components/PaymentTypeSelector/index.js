@@ -15,11 +15,29 @@ const PaymentTypeSelector = () => {
       <PaymentTypeItem
         caption="Карта Visa/MasterCard"
         image={VisaMastercardLogos}
+        paymentTypeIndex={0}
       />
-      <PaymentTypeItem active caption="Приват24" image={Privat24Logo} />
-      <PaymentTypeItem caption="Термінали України" image={TerminalsLogo} />
-      <PaymentTypeItem caption="WebMoney" image={WebmoneyLogo} />
-      <PaymentTypeItem caption="PayPal" image={PayPalLogo} />
+      <PaymentTypeItem
+        active
+        caption="Приват24"
+        image={Privat24Logo}
+        paymentTypeIndex={1}
+      />
+      <PaymentTypeItem
+        caption="Термінали України"
+        image={TerminalsLogo}
+        paymentTypeIndex={2}
+      />
+      <PaymentTypeItem
+        caption="WebMoney"
+        image={WebmoneyLogo}
+        paymentTypeIndex={3}
+      />
+      <PaymentTypeItem
+        caption="PayPal"
+        image={PayPalLogo}
+        paymentTypeIndex={4}
+      />
     </div>
   );
 };

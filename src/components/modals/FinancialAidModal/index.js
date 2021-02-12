@@ -11,12 +11,17 @@ import HelpTypeItem from '../../HelpTypeItem';
 import PaymentTypeSelector from '../../PaymentTypeSelector';
 import PaymentCard from '../../PaymentCard';
 import style from './FinancialAidModal.module.scss';
+import { HelpTypeContext } from '../../../contexts/HelpTypeContext';
+import { PaymentTypeContext } from '../../../contexts/PaymentTypeContext';
 
 const FinancialAidModal = () => {
   const [isJuridical, setIsJuridical] = useState(false);
   const toggleIsJuridical = () => {
     setIsJuridical((prevState) => !prevState);
   };
+
+  const [helpType, setHelpType] = useState(1);
+  const [paymentType, setPaymentType] = useState(0);
 
   return (
     <Modal show={1} size="wide">
@@ -94,45 +99,68 @@ const FinancialAidModal = () => {
           </Form>
         </div>
       </div>
-      <h1 className="dark text-center mt-4">Види допомоги</h1>
-      <p className="text-center subHeader">Ви можете змінити вид допомоги</p>
-      <div className="d-flex align-items-center justify-content-around mt-4">
-        <HelpTypeItem caption="Зробити">
-          <IoHandRightOutline />
-        </HelpTypeItem>
-        <HelpTypeItem active caption={'Фінансова\nдопомога'}>
-          <IoWalletOutline />
-        </HelpTypeItem>
-        <HelpTypeItem caption={'Матеріальна\nдопомога'}>
-          <IoShirtOutline />
-        </HelpTypeItem>
-        <HelpTypeItem caption="Волонтерство">
-          <IoHeartOutline />
-        </HelpTypeItem>
-      </div>
-      <div
-        className="my-4 d-flex justify-content-between"
-        style={{
-          border: '2px solid #c5d5e6',
-          borderRadius: '1rem',
-          padding: '0.75rem 1.25rem',
-        }}
-      >
-        <div>
-          <div className="mb-2 form-label">Спосіб оплати</div>
-          <PaymentTypeSelector />
+      <HelpTypeContext.Provider value={{ helpType, setHelpType }}>
+        <h1 className="dark text-center mt-4">Види допомоги</h1>
+        <p className="text-center subHeader">Ви можете змінити вид допомоги</p>
+        <div className="d-flex align-items-center justify-content-around mt-4">
+          <HelpTypeItem caption="Зробити" helpTypeIndex={0}>
+            <IoHandRightOutline />
+          </HelpTypeItem>
+          <HelpTypeItem caption={'Фінансова\nдопомога'} helpTypeIndex={1}>
+            <IoWalletOutline />
+          </HelpTypeItem>
+          <HelpTypeItem caption={'Матеріальна\nдопомога'} helpTypeIndex={2}>
+            <IoShirtOutline />
+          </HelpTypeItem>
+          <HelpTypeItem caption="Волонтерство" helpTypeIndex={3}>
+            <IoHeartOutline />
+          </HelpTypeItem>
         </div>
-        <div>
-          <div className="mb-2 form-label">Введіть наступні данні</div>
-          <PaymentCard />
+        {helpType === 1 ? (
+          <div
+            className={`my-4 d-flex justify-content-between ${style.paymentWrapper}`}
+          >
+            <PaymentTypeContext.Provider
+              value={{ paymentType, setPaymentType }}
+            >
+              <div>
+                <div className="mb-2 form-label">Спосіб оплати</div>
+                <PaymentTypeSelector />
+              </div>
+              {paymentType === 0 ? (
+                <div>
+                  <div className="mb-2 form-label">Введіть наступні данні</div>
+                  <PaymentCard />
+                </div>
+              ) : (
+                <div>
+                  <div
+                    className="h-100 d-flex flex-column justify-content-center"
+                    style={{ marginRight: '6rem' }}
+                  >
+                    <div>Payment method #{paymentType}</div>
+                  </div>
+                </div>
+              )}
+            </PaymentTypeContext.Provider>
+          </div>
+        ) : (
+          <div
+            className={`my-4 d-flex justify-content-between ${style.paymentWrapper}`}
+            style={{ height: '264px' }}
+          >
+            <div style={{ margin: 'auto' }}>
+              You are currently on tab #{helpType}
+            </div>
+          </div>
+        )}
+        <div
+          className="mt-4 d-flex justify-content-center"
+          style={{ marginBottom: '4rem' }}
+        >
+          <Button variant="colorful">Допомогти</Button>
         </div>
-      </div>
-      <div
-        className="mt-4 d-flex justify-content-center"
-        style={{ marginBottom: '4rem' }}
-      >
-        <Button variant="colorful">Допомогти</Button>
-      </div>
+      </HelpTypeContext.Provider>
     </Modal>
   );
 };
