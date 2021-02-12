@@ -1,0 +1,49 @@
+//$hoverColor: #808b96;
+$hoverColor: #7b94ab;
+$defaultColor: #c5d5e6;
+$activeColor: #9c5d9a;
+
+.paymentTypeItem {
+  width: 170px;
+  height: 84px;
+  background-color: $defaultColor;
+  border-radius: 0.5rem;
+  margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  cursor: pointer;
+  transition: 0.25s all;
+
+  &:hover{
+    background-color: $hoverColor;
+    transform: scale(1.1);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  &.active{
+    background-color: $activeColor;
+  }
+
+  .caption{
+    font-family: Gilroy, sans-serif;
+    color: #fff;
+    font-size: 10pt;
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .logo{
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    right: 20px;
+    bottom: 22pt;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    //border: 1px solid black;
+  }
+}

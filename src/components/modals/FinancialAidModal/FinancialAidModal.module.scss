@@ -1,0 +1,16 @@
+.formColumn{
+  min-width: 300px;
+  max-width: 400px;
+  margin: 0 4rem;
+}
+.extraLogoWrapper{
+  position: relative;
+
+  .extraLogo{
+    position: absolute;
+    margin-left: 1rem;
+    left: 100%;
+    top: 50%;
+    width: 60px;
+  }
+}

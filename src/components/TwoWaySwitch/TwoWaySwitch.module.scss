@@ -1,0 +1,33 @@
+$darkTextColor: #363b5d;
+$hoverColor: #dfe1ec;
+
+.switchWrapper{
+  & div{
+    border: 2px solid $darkTextColor;
+    font-size: 10pt;
+    padding: 0.5rem 1.5rem;
+    font-weight: 700;
+    color: $darkTextColor;
+    transition: 0.25s all;
+    cursor: pointer;
+  }
+
+  & div:nth-child(1){
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+
+  & div:nth-child(2){
+    margin-left: -2px;
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+
+  & div:not(.active):hover{
+    background-color: $hoverColor;
+  }
+
+  .active{
+    background-color: $darkTextColor;
+    color: #fff;
+  }
+
+}

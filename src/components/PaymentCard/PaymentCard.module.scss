@@ -1,0 +1,28 @@
+.paymentCard {
+  width: 380px;
+  height: calc(168px + 1.25rem);
+  background-color: #c5d5e6;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem 1.5rem;
+
+  .labelWhite {
+    color: #fff;
+  }
+
+  .formRow {
+    &>div {
+      margin: 0;
+    }
+  }
+  .formGroup{
+    margin: 0;
+    padding: 0;
+  }
+
+  .secondRow{
+
+    &>div {
+      width: 40%;
+    }
+  }
+}

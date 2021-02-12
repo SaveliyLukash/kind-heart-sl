@@ -1,0 +1,61 @@
+//$hoverColor: #808b96;
+$hoverColor: #7b94ab;
+$defaultColor: #c5d5e6;
+$activeColor: #9c5d9a;
+
+.helpTypeItem {
+  cursor: pointer;
+  transition: 0.25s all;
+
+  &:hover {
+    transform: scale(1.025);
+
+    .caption {
+      color: $hoverColor;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1)
+    }
+
+    .iconWrapper {
+      border: 2px solid $hoverColor;
+      background-color: $hoverColor;
+      color: #fff;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.active {
+    .caption {
+      color: #000;
+    }
+
+    .iconWrapper {
+      background-color: $activeColor;
+      border: 2px solid $activeColor;
+      color: #fff;
+    }
+  }
+
+
+  .iconWrapper {
+    transition: 0.25s all;
+    padding: 1rem;
+    border: 2px solid $defaultColor;
+    border-radius: 0.85rem;
+    color: $defaultColor;
+
+    svg {
+      width: 44px;
+      height: 44px;
+    }
+  }
+
+  .caption {
+    transition: 0.25s all;
+    white-space: pre-wrap;
+    font-weight: 900;
+    margin-left: 1rem;
+    line-height: 1;
+    font-size: 14pt;
+    color: $defaultColor;
+  }
+}
