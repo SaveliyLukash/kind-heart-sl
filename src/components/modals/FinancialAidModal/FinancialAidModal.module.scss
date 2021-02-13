@@ -5,29 +5,69 @@
   margin: 0 4rem;
 }
 
-.extraLogoWrapper {
+.inputOrg {
   position: relative;
 
-  .extraLogo {
+
+  .extraLogoDiv {
     position: absolute;
-    margin-left: 1rem;
+    cursor: pointer;
+    top: 30px;
     left: 100%;
-    top: 50%;
-    width: 60px;
-  }
-}
+    margin-left: 1rem;
 
-.extraLogoDiv {
-  position: relative;
-  .extraLogoLink {
-    overflow: hidden;
+    &.changeLogoDiv {
+      top: 19px;
+    }
+
+    .extraLogoLink {
+      overflow: hidden;
+    }
+
+    .extraLogoInput {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 72px;
+    }
+
+    .labelWrap:hover {
+      .extraLogoLabel {
+        text-decoration: underline;
+      }
+    }
+
+    .extraLogoLabel {
+      color: #4d92e3;
+      font-size: 10pt;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
   }
 
-  .extraLogoInput {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
+  .deleteLogoDiv {
+    cursor: pointer;
+    color: #e34d5a;
+    font-size: 10pt;
+  }
+
+  .deleteLogoDiv:hover{
+    text-decoration: underline;
+  }
+
+  @media (max-width: 575.98px) {
+    .extraLogoDiv {
+      position: relative;
+      margin-left: 0;
+      left: 0;
+      top: 0;
+
+      &.changeLogoDiv {
+        top: 0;
+      }
+    }
   }
 }
 

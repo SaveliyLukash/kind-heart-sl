@@ -136,6 +136,7 @@ const FinancialAidModal = (props) => {
       card: data.card_1
         ? `${data.card_1}${data.card_2}${data.card_3}${data.card_4}`
         : undefined,
+      logo: data.logo ? data.logo : undefined,
       phone: data?.phone?.replaceAll(' ', '')?.replaceAll('+', ''),
     };
     delete processedData.card_1;
@@ -145,14 +146,18 @@ const FinancialAidModal = (props) => {
     return processedData;
   };
 
+  const [helpType, setHelpType] = useState(1);
+  const [paymentType, setPaymentType] = useState(0);
+
+  const [logoAttached, setLogoAttached] = useState(false);
+
   const onSubmit = (data) => {
     const processedData = processData(data);
     console.log(processedData);
     setResQuery(processedData);
     hideModal();
+    setLogoAttached(false);
   };
-  const [helpType, setHelpType] = useState(1);
-  const [paymentType, setPaymentType] = useState(0);
 
   useEffect(() => {
     setValue('helpType', helpType);
@@ -215,19 +220,69 @@ const FinancialAidModal = (props) => {
                     </Form.Group>
                   </Form.Row>
 
-                  <Form.Group controlId="formGridOrg">
+                  <Form.Group
+                    controlId="formGridOrg"
+                    className={style.inputOrg}
+                  >
                     <Form.Label>Назва компанії, організації</Form.Label>
                     <ControlledInput
                       control={control}
                       name="companyName"
                       errorMsg={errors?.companyName?.message}
                     />
-                    <div className={style.extraLogoDiv}>
-                      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                      <label className={style.extraLogoLabel}>
-                        +&nbsp;Логотип
-                        <input className={style.extraLogoInput} type="file" />
-                      </label>
+                    <div
+                      className={`${style.extraLogoDiv} ${
+                        logoAttached ? style.changeLogoDiv : null
+                      } d-flex flex-sm-column justify-content-xs-start flex-row justify-content-between`}
+                    >
+                      <div className={style.labelWrap}>
+                        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                        <label className={style.extraLogoLabel}>
+                          <span id="extraLogoLabelText">
+                            {logoAttached ? 'Змінити?' : '+ Логотип'}
+                          </span>
+                          <Controller
+                            name="logo"
+                            render={({
+                              onChange,
+                              onBlur,
+                              value,
+                              name,
+                              ref,
+                            }) => (
+                              <input
+                                className={style.extraLogoInput}
+                                id="logoInput"
+                                type="file"
+                                accept=".jpg, .png, .jpeg, .gif|image/*"
+                                onChange={(e) => {
+                                  if (e.target.files.length !== 0) {
+                                    setLogoAttached(true);
+                                  } else {
+                                    setLogoAttached(false);
+                                  }
+                                  onChange(e);
+                                }}
+                                onBlur={onBlur}
+                                name={name}
+                                ref={ref}
+                                value={value}
+                              />
+                            )}
+                          />
+                        </label>
+                      </div>
+                      {logoAttached && (
+                        <div
+                          className={style.deleteLogoDiv}
+                          onClick={() => {
+                            setValue('logo', '');
+                            setLogoAttached(false);
+                          }}
+                        >
+                          Видалити!
+                        </div>
+                      )}
                     </div>
                   </Form.Group>
 

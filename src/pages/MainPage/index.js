@@ -12,7 +12,7 @@ const MainPage = () => {
     setModalVisible(true);
   };
 
-  const [resQuery, setResQuery] = useState('');
+  const [resQuery, setResQuery] = useState('Form not submitted yet!');
   return (
     <div className={style.mainPage}>
       <FinancialAidModal
