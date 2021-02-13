@@ -4,3 +4,14 @@
   background: rgb(54, 59, 93);
   background: linear-gradient(135deg, rgba(54, 59, 93, 1) 0%, rgba(63, 104, 162, 1) 100%);
 }
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.outputArea{
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 1rem;
+}
